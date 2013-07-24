@@ -1,4 +1,5 @@
 #import "MainMenuLayer.h"
+#import "GameLayer.h"
 
 @implementation MainMenuLayer
 
@@ -8,7 +9,7 @@
 	
 	MainMenuLayer *layer = [MainMenuLayer node];
 	
-	[scene addChild: layer];
+	[scene addChild:layer];
 	
 	return scene;
 }
@@ -17,17 +18,22 @@
 {
 	if ((self = [super init]))
 	{
-		
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-		
-		CGSize size = [[CCDirector sharedDirector] winSize];
-		
-		label.position =  ccp(size.width / 2 , size.height/ 2);
-		
-		[self addChild:label];
+        CCMenuItem *testButton = [CCMenuItemFont itemFromString:@"test" target:self selector:@selector(playTest:)];
+        
+        CCMenu *mainMenu = [CCMenu menuWithItems:testButton, nil];
+        
+        [mainMenu alignItemsVertically];
+        
+        [self addChild:mainMenu];
 	}
 	
 	return self;
+}
+
+- (void) playTest : (id) sender 
+{
+    [[CCDirector sharedDirector] replaceScene:
+	 [CCTransitionFade transitionWithDuration:0.5f scene:[GameLayer scene]]];
 }
 
 - (void) dealloc
