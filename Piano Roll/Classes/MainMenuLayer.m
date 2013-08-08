@@ -1,9 +1,8 @@
 #import "MainMenuLayer.h"
-#import "GameLayer.h"
 
 @implementation MainMenuLayer
 
-+ (CCScene *) scene
++(CCScene *)scene
 {
 	CCScene *scene = [CCScene node];
 	
@@ -14,13 +13,13 @@
 	return scene;
 }
 
-- (id) init
+-(id)init
 {
 	if ((self = [super init]))
 	{
-        CCMenuItem *testButton = [CCMenuItemFont itemFromString:@"test" target:self selector:@selector(playTest:)];
+        CCMenuItem *miPlayTest = [CCMenuItemFont itemFromString:@"test" target:self selector:@selector(playTest:)];
         
-        CCMenu *mainMenu = [CCMenu menuWithItems:testButton, nil];
+        CCMenu *mainMenu = [CCMenu menuWithItems:miPlayTest, nil];
         
         [mainMenu alignItemsVertically];
         
@@ -30,13 +29,13 @@
 	return self;
 }
 
-- (void) playTest : (id) sender 
+-(void)playTest:(id)sender 
 {
-    [[CCDirector sharedDirector] replaceScene:
-	 [CCTransitionFade transitionWithDuration:0.5f scene:[GameLayer scene]]];
+	tilemapPath = @"test.tmx";
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.5f scene:[GameLayer scene]]];
 }
 
-- (void) dealloc
+-(void)dealloc
 {
 	[super dealloc];
 }

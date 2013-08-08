@@ -1,26 +1,27 @@
 #import "cocos2d.h"
+#import "Globals.h"
 #import "Vector.h"
 #import "Player.h"
+#import "MainMenuLayer.h"
+#import "HighScoresLayer.h"
 
-@interface GameLayer : CCLayer
+@interface GameLayer:CCLayer
 {
-	// tilemap
-	NSString *tilemapPath;
 	CCTMXTiledMap *tilemapNode;
-	CCTMXLayer *platformLayer;
-	
-	// game info
-	Vector gravityAcceleration;
-	Vector tilemapVelocity;
-	Vector startPos;
 	Vector tilemapPos;
+	Vector tilemapVelocity;
+
+	Vector startPos;
+	Vector gravityAcceleration;
+
+	BOOL paused;
+	int score;
 	
-	// user
 	Player *user;
 }
 
-+ (CCScene *) scene;
++(CCScene *)scene;
 
-- (void) transitionToScoreScene;
+-(void)transitionToHighScoresScene;
 
 @end

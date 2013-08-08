@@ -109,6 +109,11 @@
 	// Removes the startup flicker
 	[self removeStartupFlicker];
 	
+	// init the global screen size variables
+	CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    screenWidth = screenSize.width;
+    screenHeight = screenSize.height;
+	
 	// Run the intro Scene
 	[[CCDirector sharedDirector] runWithScene: [MainMenuLayer scene]];
 }

@@ -1,9 +1,11 @@
 #import "cocos2d.h"
+#import "Globals.h"
+#import "GameLayer.h"
 
-@interface MainMenuLayer : CCLayer
+@interface MainMenuLayer:CCLayer
 {
 }
 
-+ (CCScene *) scene;
++(CCScene *)scene;
 
 @end
